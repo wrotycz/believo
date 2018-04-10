@@ -9,8 +9,13 @@ import { Scenario } from '../../model/types';
 export class ScenarioComponent {
 
   @Input() scenario: Scenario;
+  background: string;
 
   constructor() {
+    this.setBackground();
   }
 
+  private setBackground() {
+    this.background = 'md-card' + Math.floor(Math.random() * 5 + 1);
+  }
 }

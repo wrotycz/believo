@@ -1,3 +1,14 @@
-<p>
-  scenario works!
-</p>
+<!-- Wide card with share menu button -->
+<div class="app-card-wide mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title" [ngStyle]="{'background':'url(../../assets/scenarios/backgrounds/' + background + '.gif) center / cover'}">
+    <h2 class="mdl-card__title-text">{{scenario.name}}</h2>
+  </div>
+  <div class="mdl-card__supporting-text" *ngIf="scenario.description">
+    {{scenario.description}}
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      Proceed
+    </a>
+  </div>
+</div>

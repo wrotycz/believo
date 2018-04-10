@@ -1,3 +1,6 @@
-<p>
-  scenario-list works!
-</p>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--2dp"
+       *ngFor="let scenario of scenarios">
+    <app-scenario [scenario]="scenario"></app-scenario>
+  </div>
+</div>

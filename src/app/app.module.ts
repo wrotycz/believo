@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
+import { LocalStorageModule } from '@ngx-pwa/local-storage';
+import { createLogger } from 'redux-logger'
+
 import { AppComponent } from './app.component';
 import { AppState } from './model/state';
 import { MOCK_STATE, rootReducer } from './app.store';
@@ -27,13 +30,14 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    NgReduxModule
+    NgReduxModule,
+    LocalStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngRedux: NgRedux<AppState>) {
-    ngRedux.configureStore(rootReducer, MOCK_STATE);
+  constructor(redux: NgRedux<AppState>) {
+    redux.configureStore(rootReducer, MOCK_STATE, [ createLogger() ]);
   }
 }

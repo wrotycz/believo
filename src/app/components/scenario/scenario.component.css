@@ -1,0 +1,10 @@
+.app-card-wide.mdl-card {
+  width: 512px;
+}
+.app-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 192px;
+}
+.app-card-wide > .mdl-card__menu {
+  color: #fff;
+}

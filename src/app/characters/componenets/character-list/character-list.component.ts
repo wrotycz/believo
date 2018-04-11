@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Characters } from '../../../model/types';
 
 @Component({
   selector: 'app-character-list',
@@ -8,7 +9,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class CharacterListComponent implements OnInit {
 
-  constructor() { }
+  @Input() characters: Characters;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -1,7 +1,2 @@
-<p>
-  characters-page works!
-</p>
 <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" *ngIf="(characters$ | async).isFetching"></div>
-<ul *ngFor="let character of (characters$ | async).payload">
-  <li>{{character.name}}</li>
-</ul>
+<app-character-list [characters]="(characters$ | async).payload"></app-character-list>

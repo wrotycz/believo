@@ -1,1 +1,2 @@
+<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" *ngIf="(scenarios$ | async).isFetching"></div>
 <app-scenario-list [scenarios]="(scenarios$ | async).payload"></app-scenario-list>

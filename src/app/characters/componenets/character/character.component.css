@@ -1,0 +1,7 @@
+.app-character-card.mdl-card {
+  width: 512px;
+}
+
+.mdl-card__supporting-text {
+  font-size: 1.3em;
+}

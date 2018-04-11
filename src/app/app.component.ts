@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Believo - hack, loot, believe!';
-  titleShort = 'Believo';
+
+  goBack() {
+    window.history.back();
+  }
 }

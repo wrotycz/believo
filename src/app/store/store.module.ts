@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { rootReducer } from './store';
-import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
 import { AppState } from '../model/state';
 import { createLogger } from 'redux-logger';
 
@@ -12,7 +12,14 @@ import { createLogger } from 'redux-logger';
   declarations: []
 })
 export class StoreModule {
-  constructor(redux: NgRedux<AppState>) {
-    redux.configureStore(rootReducer, {}, [ createLogger() ]);
+  constructor(private redux: NgRedux<AppState>, private devTools: DevToolsExtension) {
+    const middleware = [createLogger()];
+
+    let enhancers = [];
+    if (devTools.isEnabled()) {
+      enhancers = [...enhancers, devTools.enhancer()];
+    }
+
+    redux.configureStore(rootReducer, {}, middleware, enhancers);
   }
 }

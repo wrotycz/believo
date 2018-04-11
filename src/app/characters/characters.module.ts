@@ -9,6 +9,7 @@ import { CharacterService } from './services/character.service';
 import { NgReduxModule } from '@angular-redux/store';
 import { CharacterActions } from '../store/actions/characters.actions';
 import { StoreModule } from '../store/store.module';
+import { CharacterDetailsComponent } from './componenets/character-details/character-details.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { StoreModule } from '../store/store.module';
   declarations: [
     CharactersPageComponent,
     CharacterListComponent,
-    CharacterComponent],
+    CharacterComponent,
+    CharacterDetailsComponent],
   providers: [
     CharacterService,
     CharacterActions

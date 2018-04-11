@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Character } from '../../../model/types';
 
 @Component({
   selector: 'app-character',
@@ -6,11 +7,18 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./character.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CharacterComponent implements OnInit {
+export class CharacterComponent {
 
-  constructor() { }
+  @Input() character: Character;
 
-  ngOnInit() {
+  background: string;
+
+  constructor() {
+    this.setBackground();
+  }
+
+  private setBackground() {
+    this.background = 'md-card' + Math.floor(Math.random() * 5 + 1);
   }
 
 }

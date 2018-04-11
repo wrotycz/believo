@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { LocalStorageModule } from '@ngx-pwa/local-storage';
-
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from './store/store.module';
@@ -20,8 +18,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    StoreModule,
-    LocalStorageModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

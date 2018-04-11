@@ -11,6 +11,8 @@ export interface Scenario {
   description?: string;
 }
 
+export type Scenarios = Scenario[];
+
 export interface Character {
   id: number;
   name: string;
@@ -19,9 +21,13 @@ export interface Character {
   playerName: string;
 }
 
+export type Characters = Character[];
+
 export interface Trait {
   id: number;
   name: string;
   description?: string;
   cost: number;
 }
+
+export type Traits = Trait[];

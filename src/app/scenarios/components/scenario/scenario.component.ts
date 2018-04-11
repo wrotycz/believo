@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { Scenario } from '../../model/types';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Scenario } from '../../../model/types';
 
 @Component({
   selector: 'app-scenario',
   templateUrl: './scenario.component.html',
-  styleUrls: ['./scenario.component.css']
+  styleUrls: ['./scenario.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScenarioComponent {
 

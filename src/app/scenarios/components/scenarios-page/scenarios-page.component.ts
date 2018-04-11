@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { select } from '@angular-redux/store';
-import { Scenario } from '../../model/types';
+import { Scenarios } from '../../../model/types';
 import { Observable } from 'rxjs/Observable';
+import { StateEntity } from '../../../model/state';
 
 @Component({
   selector: 'app-scenarios-page',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ScenariosPageComponent implements OnInit {
 
-  @select('scenarios') scenarios: Observable<Scenario[]>;
+  @select() scenarios$: Observable<StateEntity<Scenarios>>;
 
   constructor() {
   }

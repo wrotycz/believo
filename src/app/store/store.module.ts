@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { rootReducer } from './store';
+import { rootReducer } from './root-reducer';
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
-import { AppState } from '../model/state';
+import { AppState } from './state-model';
 import { createLogger } from 'redux-logger';
 
 @NgModule({

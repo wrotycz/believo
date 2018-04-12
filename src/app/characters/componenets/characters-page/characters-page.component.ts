@@ -3,9 +3,9 @@ import { NgRedux, select } from '@angular-redux/store';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Characters } from '../../../model/types';
 import { Observable } from 'rxjs/Observable';
-import { CharacterService } from '../../services/character.service';
-import { AppState, StateEntity } from '../../../model/state';
-import { CharacterActions } from '../../../store/actions/characters.actions';
+import { CharacterMockService } from '../../services/character-mock.service';
+import { AppState, StateEntity } from '../../../store/state-model';
+import { CharactersActions } from '../../../store/actions/characters.actions';
 
 @Component({
   selector: 'app-characters-page',
@@ -18,8 +18,8 @@ export class CharactersPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private redux: NgRedux<AppState>,
-    private characterService: CharacterService,
-    private actions: CharacterActions) {
+    private characterService: CharacterMockService,
+    private actions: CharactersActions) {
   }
 
   ngOnInit() {

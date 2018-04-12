@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { StateEntity } from '../../model/state';
+import { StateEntity } from '../state-model';
 import { User } from '../../model/types';
 
 const INITIAL_STATE = { payload: { id: 1, email: 'gm@believo.pl', type: 'GM', username: 'ur_m45t3r' }, isFetching: false };

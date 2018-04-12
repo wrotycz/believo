@@ -1,1 +1,27 @@
-<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" *ngIf="(character$ | async).isFetching"></div>
+<div class="content" *ngIf="(character$ | async).payload as character">
+  <div class="header">
+    <div class="name">
+      <h3>{{character.name}}</h3>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+      <i class="material-icons" routerLink="edit">&#xE22B;</i>
+    </button>
+  </div>
+  <table>
+    <tbody>
+      <tr>
+        <td class="label">player: </td>
+        <td>{{character.playerName}}</td>
+      </tr>
+      <tr>
+        <td class="label">experience: </td>
+        <td>{{character.experience}}</td>
+      </tr>
+      <tr *ngIf="character.description">
+        <td class="label">description: </td>
+        <td>{{character.description}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

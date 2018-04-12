@@ -12,7 +12,7 @@ export const charactersReducer: Reducer<StateEntity<Characters>> =
       case CharactersActions.CHARACTERS_REQUEST_DISPATCHED:
         return { ...state, isFetching: true };
       case CharactersActions.CHARACTERS_REQUEST_SUCCESS:
-        return { payload: (action as RequestSuccessAction<Characters>).payload, isFetching: false };
+        return { ...state, payload: (action as RequestSuccessAction<Characters>).payload, isFetching: false };
       case CharactersActions.CHARACTERS_REQUEST_FAILURE:
         return { ...state, isFetching: false, error: (action as RequestFailureAction).error };
     }

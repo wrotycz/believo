@@ -1,0 +1,13 @@
+<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" *ngIf="(character$ | async).isFetching"></div>
+<div class="content" *ngIf="(character$ | async).payload as character">
+  <div class="header">
+    <div class="name">
+      <h3>{{character.name}}</h3>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+            routerLink="edit" [disabled]="(character$ | async).isEditActive">
+      <i class="material-icons">&#xE22B;</i>
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

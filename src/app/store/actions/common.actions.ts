@@ -2,6 +2,8 @@ import { Action } from 'redux';
 
 export type RequestDispatchedAction = Action;
 
+export type EditActiveAction = Action;
+
 export interface RequestSuccessAction<T> extends Action {
   payload: T;
 }

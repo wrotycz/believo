@@ -1,0 +1,15 @@
+td {
+  padding: 0.5em 1em 0.5em 0em;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+}
+
+td.label {
+  text-transform: uppercase;
+  text-effect: engrave;
+  color: grey;
+}
+
+.mdl-button {
+  margin-top: 1.5em;
+}

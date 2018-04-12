@@ -19,7 +19,6 @@ export class CharacterDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private redux: NgRedux<AppState>,
     private characterService: CharacterMockService,
     private actions: SingleCharacterActions) {
   }

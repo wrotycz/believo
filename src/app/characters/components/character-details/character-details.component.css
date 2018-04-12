@@ -1,0 +1,11 @@
+.content {
+  padding: 0em 1em;
+}
+
+.header {
+  display: inline-flex;
+}
+
+.header > .name {
+  padding-right: 1em;
+}

@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CharactersPageComponent } from './componenets/characters-page/characters-page.component';
-import { CharacterDetailsComponent } from './componenets/character-details/character-details.component';
-import { CharacterEditComponent } from './components/character-edit/character-edit.component';
+import { CharactersPageComponent } from './components/characters-page/characters-page.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import { CharacterDetailsEditComponent } from './components/character-details/character-details-edit/character-details-edit.component';
+import { CharacterDetailsContentComponent } from './components/character-details/character-details-content/character-details-content.component';
 
 const routes: Routes = [
   { path: '', component: CharactersPageComponent },
@@ -10,7 +11,8 @@ const routes: Routes = [
     path: ':character_id',
     component: CharacterDetailsComponent,
     children: [
-      { path: 'edit', component: CharacterEditComponent }
+      { path: '', component: CharacterDetailsContentComponent },
+      { path: 'edit', component: CharacterDetailsEditComponent }
     ]
   }
 ];

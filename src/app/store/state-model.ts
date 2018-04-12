@@ -5,11 +5,12 @@ export interface AppState {
   scenarios?: StateEntity<Scenarios>;
   characters?: StateEntity<Characters>;
   traits?: StateEntity<Traits>;
-  character?: Character;
+  character?: StateEntity<Character>;
 }
 
 export interface StateEntity<T> {
   payload: T;
   isFetching: boolean;
   error?: string;
+  isEditActive?: boolean;
 }

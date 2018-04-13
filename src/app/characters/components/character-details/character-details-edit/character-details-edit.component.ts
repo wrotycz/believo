@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StateEntity } from '../../../../store/state-model';
 import { Observable } from 'rxjs/Observable';
-import { Character } from '../../../../model/types';
+import { Character, CharacterFormDto } from '../../../../model/types';
 import { select } from '@angular-redux/store';
 import { SingleCharacterActions } from '../../../../store/actions/single-character.actions';
+import { SingleCharacterFormActions } from '../../../../store/actions/single-character-form.actions';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 @Component({
   selector: 'app-character-details-edit',
@@ -11,17 +14,36 @@ import { SingleCharacterActions } from '../../../../store/actions/single-charact
   styleUrls: ['./character-details-edit.component.css']
 })
 export class CharacterDetailsEditComponent implements OnInit, OnDestroy {
-
   @select() character$: Observable<StateEntity<Character>>;
+  @select() characterForm$: Observable<CharacterFormDto>;
 
-  constructor(private actions: SingleCharacterActions) { }
+  constructor(
+    private singleCharacterActions: SingleCharacterActions,
+    private formActions: SingleCharacterFormActions
+  ) {
+  }
 
   ngOnInit() {
-    this.actions.singleCharacterEditActive();
+    this.singleCharacterActions.singleCharacterEditActive();
+    this.character$.pipe(
+      switchMap(stateEntity => of(stateEntity.payload))
+    ).subscribe(character => {
+      const charDto = Object.assign({}, character);
+      if (charDto) {
+        charDto.id = undefined;
+        this.formActions.populateCharacterForm(charDto);
+      }
+    });
   }
 
   ngOnDestroy(): void {
-    this.actions.singleCharacterEditInactive();
+    this.singleCharacterActions.singleCharacterEditInactive();
+  }
+
+  onSubmit() {
+    // TODO make rest request, handle success and failure
+    // this.singleCharacterActions.singleCharacterEditRequestSuccess()
+    // this.singleCharacterActions.singleCharacterEditRequestFailure()
   }
 
 }

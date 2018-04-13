@@ -11,9 +11,9 @@ export const singleCharacterReducer: Reducer<StateEntity<Character>> =
     switch (action.type) {
       case SingleCharacterActions.SINGLE_CHARACTER_REQUEST_DISPATCHED:
         return { ...state, isFetching: true };
-      case SingleCharacterActions.SINGLE_CHARACTER_REQUEST_SUCCESS:
+      case SingleCharacterActions.SINGLE_CHARACTER_REQUEST_SUCCESS || SingleCharacterActions.SINGLE_CHARACTER_EDIT_REQUEST_SUCCESS:
         return { ...state, payload: (action as RequestSuccessAction<Character>).payload, isFetching: false };
-      case SingleCharacterActions.SINGLE_CHARACTER_REQUEST_FAILURE:
+      case SingleCharacterActions.SINGLE_CHARACTER_REQUEST_FAILURE || SingleCharacterActions.SINGLE_CHARACTER_EDIT_REQUEST_ERROR:
         return { ...state, isFetching: false, error: (action as RequestFailureAction).error };
       case SingleCharacterActions.SINGLE_CHARACTER_EDIT_ACTIVE:
         return {...state, isEditActive: true };

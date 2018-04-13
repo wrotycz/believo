@@ -30,5 +30,4 @@ export class CharactersPageComponent implements OnInit {
       }, error => this.actions.charactersRequestFailure(error));
     });
   }
-
 }

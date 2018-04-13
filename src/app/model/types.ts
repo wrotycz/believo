@@ -21,6 +21,13 @@ export interface Character {
   playerName: string;
 }
 
+export interface CharacterFormDto {
+  name: string;
+  description?: string;
+  experience: number;
+  playerName: string;
+}
+
 export type Characters = Character[];
 
 export interface Trait {

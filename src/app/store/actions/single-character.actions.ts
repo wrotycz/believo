@@ -15,6 +15,9 @@ export class SingleCharacterActions {
   static readonly SINGLE_CHARACTER_EDIT_ACTIVE = 'SINGLE_CHARACTER_EDIT_ACTIVE';
   static readonly SINGLE_CHARACTER_EDIT_INACTIVE = 'SINGLE_CHARACTER_EDIT_INACTIVE';
 
+  static readonly SINGLE_CHARACTER_EDIT_REQUEST_SUCCESS = 'SINGLE_CHARACTER_EDITED';
+  static readonly SINGLE_CHARACTER_EDIT_REQUEST_ERROR = 'SINGLE_CHARACTER_EDIT_REQUEST_ERROR';
+
   @dispatch() singleCharacterRequestDispatched(): RequestDispatchedAction {
     return { type: SingleCharacterActions.SINGLE_CHARACTER_REQUEST_DISPATCHED };
   }
@@ -33,5 +36,13 @@ export class SingleCharacterActions {
 
   @dispatch() singleCharacterEditInactive(): EditActiveAction {
     return { type: SingleCharacterActions.SINGLE_CHARACTER_EDIT_INACTIVE };
+  }
+
+  @dispatch() singleCharacterEditRequestSuccess(payload: Character): RequestSuccessAction<Character> {
+    return { type: SingleCharacterActions.SINGLE_CHARACTER_EDIT_REQUEST_SUCCESS, payload: payload };
+  }
+
+  @dispatch() singleCharacterEditRequestFailure(error: string): RequestFailureAction {
+    return { type: SingleCharacterActions.SINGLE_CHARACTER_EDIT_REQUEST_ERROR, error: error };
   }
 }

@@ -1,22 +1,32 @@
-<div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active" *ngIf="(character$ | async).isFetching"></div>
-<div *ngIf="(character$ | async).payload as character">
-  <table>
-    <tbody>
-    <tr>
-      <td class="label">player:</td>
-      <td>{{character.playerName}}</td>
-    </tr>
-    <tr>
-      <td class="label">experience:</td>
-      <td>{{character.experience}}</td>
-    </tr>
-    <tr *ngIf="character.description">
-      <td class="label">description:</td>
-      <td>{{character.description}}</td>
-    </tr>
-    </tbody>
-  </table>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-    Apply
-  </button>
+<div *ngIf="(character$ | async).payload">
+  <form connect="characterForm" (ngSubmit)="onSubmit()" #form="ngForm">
+    <table>
+      <tbody>
+      <tr>
+        <td class="label">name:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="text" name="name"
+                   ngModel required></td>
+      </tr>
+      <tr>
+        <td class="label">player:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="text" name="playerName"
+                   ngModel required></td>
+      </tr>
+      <tr>
+        <td class="label">experience:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="number" name="experience"
+                   placeholder="0" ngModel required></td>
+      </tr>
+      <tr>
+        <td class="label">description:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="text" name="description"
+                   ngModel></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="submit" [disabled]="form.invalid"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+      Apply
+    </button>
+  </form>
 </div>

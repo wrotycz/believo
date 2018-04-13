@@ -6,20 +6,23 @@ import { CharactersPageComponent } from './components/characters-page/characters
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CharacterComponent } from './components/character/character.component';
 import { CharacterMockService } from './services/character-mock.service';
-import { NgReduxModule } from '@angular-redux/store';
 import { CharactersActions } from '../store/actions/characters.actions';
 import { StoreModule } from '../store/store.module';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { SingleCharacterActions } from '../store/actions/single-character.actions';
 import { CharacterDetailsContentComponent } from './components/character-details/character-details-content/character-details-content.component';
 import { CharacterDetailsEditComponent } from './components/character-details/character-details-edit/character-details-edit.component';
+import { FormsModule } from '@angular/forms';
+import { NgReduxFormModule } from '@angular-redux/form';
+import { SingleCharacterFormActions } from '../store/actions/single-character-form.actions';
 
 @NgModule({
   imports: [
     CommonModule,
     CharactersRoutingModule,
-    NgReduxModule,
-    StoreModule
+    StoreModule,
+    NgReduxFormModule,
+    FormsModule
   ],
   declarations: [
     CharactersPageComponent,
@@ -31,7 +34,8 @@ import { CharacterDetailsEditComponent } from './components/character-details/ch
   providers: [
     CharacterMockService,
     CharactersActions,
-    SingleCharacterActions
+    SingleCharacterActions,
+    SingleCharacterFormActions
   ]
 })
 export class CharactersModule {

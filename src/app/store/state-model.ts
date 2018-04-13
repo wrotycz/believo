@@ -1,4 +1,4 @@
-import { Character, Characters, Scenarios, Traits, User } from '../model/types';
+import { Character, CharacterFormDto, Characters, Scenarios, Traits, User } from '../model/types';
 
 export interface AppState {
   user?: StateEntity<User>;
@@ -6,6 +6,7 @@ export interface AppState {
   characters?: StateEntity<Characters>;
   traits?: StateEntity<Traits>;
   character?: StateEntity<Character>;
+  characterForm?: CharacterFormDto;
 }
 
 export interface StateEntity<T> {

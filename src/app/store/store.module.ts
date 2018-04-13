@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { rootReducer } from './root-reducer';
 import { DevToolsExtension, NgRedux, NgReduxModule } from '@angular-redux/store';
+import { NgReduxFormModule } from '@angular-redux/form';
 import { AppState } from './state-model';
 import { createLogger } from 'redux-logger';
 
 @NgModule({
   imports: [
-    CommonModule, NgReduxModule
+    CommonModule,
+    NgReduxModule,
+    NgReduxFormModule
   ],
   declarations: []
 })

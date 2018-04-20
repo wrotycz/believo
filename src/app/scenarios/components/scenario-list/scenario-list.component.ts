@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Scenario } from '../../../model/types';
+import { Scenario, Scenarios } from '../../../model/types';
 
 @Component({
   selector: 'app-scenario-list',
@@ -9,7 +9,7 @@ import { Scenario } from '../../../model/types';
 })
 export class ScenarioListComponent implements OnInit {
 
-  @Input() scenarios: Scenario[];
+  @Input() scenarios: Scenarios;
 
   constructor() {
   }

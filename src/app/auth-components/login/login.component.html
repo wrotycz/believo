@@ -1,0 +1,14 @@
+<div class="s-login-pg">
+  <div>
+    <p>Login</p>
+  </div>
+  <form name="form" (ngSubmit)="login()" #form="ngForm" novalidate>
+    <input type="text" placeholder="username" name="username" [(ngModel)]="model.username" #username="ngModel" required/>
+    <input type="password" placeholder="password" name="password" [(ngModel)]="model.password" #password="ngModel" required/>
+    <button type="submit">LOG IN</button>
+  </form>
+  <div class="s-login-pg-foot">
+    <div *ngIf="errMsg" style="color:indianred; font-weight: bold">{{errMsg}}</div>
+  </div>
+
+</div>

@@ -38,3 +38,17 @@ export interface Trait {
 }
 
 export type Traits = Trait[];
+
+export interface Auth {
+  token: string;
+  refreshToken: string;
+}
+
+export interface AuthDto {
+  access_token: string;
+  token_type: string;
+  refresh_token: string;
+  expires_in: number;
+  scope: string;
+  jti: string;
+}

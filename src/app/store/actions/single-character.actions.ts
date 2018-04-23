@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Character } from '../../model/types';
+import { Character, CharacterFormDto } from '../../model/types';
 import { dispatch } from '@angular-redux/store';
-import { EditActiveAction, RequestDispatchedAction, RequestFailureAction, RequestSuccessAction } from './common.actions';
-
+import { CreateAction, EditActiveAction, RequestDispatchedAction, RequestFailureAction, RequestSuccessAction } from './common.actions';
 
 export type SingleCharacterAction = RequestDispatchedAction | RequestSuccessAction<Character> | RequestFailureAction | EditActiveAction;
 
@@ -17,6 +16,8 @@ export class SingleCharacterActions {
 
   static readonly SINGLE_CHARACTER_EDIT_REQUEST_SUCCESS = 'SINGLE_CHARACTER_EDITED';
   static readonly SINGLE_CHARACTER_EDIT_REQUEST_ERROR = 'SINGLE_CHARACTER_EDIT_REQUEST_ERROR';
+
+  static readonly CREATE_CHARACTER = 'CREATE_CHARACTER';
 
   @dispatch() singleCharacterRequestDispatched(): RequestDispatchedAction {
     return { type: SingleCharacterActions.SINGLE_CHARACTER_REQUEST_DISPATCHED };
@@ -44,5 +45,9 @@ export class SingleCharacterActions {
 
   @dispatch() singleCharacterEditRequestFailure(error: string): RequestFailureAction {
     return { type: SingleCharacterActions.SINGLE_CHARACTER_EDIT_REQUEST_ERROR, error: error };
+  }
+
+  @dispatch() createCharacter(payload: CharacterFormDto): CreateAction<CharacterFormDto> {
+    return { type: SingleCharacterActions.CREATE_CHARACTER, payload: payload };
   }
 }

@@ -15,3 +15,7 @@ export interface PopulateFormAction<T> extends Action {
 export interface RequestFailureAction extends Action {
   error: string;
 }
+
+export interface CreateAction<T> extends Action {
+  payload: T;
+}

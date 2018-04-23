@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
 import { Character, Characters } from '../../model/types';
-import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../../store/state-model';
+import { ICharacterService } from './character.service';
 
 @Injectable()
-export class CharacterMockService {
+export class CharacterMockService implements ICharacterService {
 
-  constructor(private redux: NgRedux<AppState>) {
+  constructor() {
   }
 
   getCharacters(scenarioId: number): Observable<Characters> {

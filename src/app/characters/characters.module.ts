@@ -13,6 +13,7 @@ import { CharacterDetailsContentComponent } from './components/character-details
 import { CharacterDetailsEditComponent } from './components/character-details/character-details-edit/character-details-edit.component';
 import { FormsModule } from '@angular/forms';
 import { SingleCharacterFormActions } from '../store/actions/single-character-form.actions';
+import { CharacterCreateComponent } from './components/character-create/character-create.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { SingleCharacterFormActions } from '../store/actions/single-character-fo
     CharacterComponent,
     CharacterDetailsComponent,
     CharacterDetailsContentComponent,
-    CharacterDetailsEditComponent],
+    CharacterDetailsEditComponent,
+    CharacterCreateComponent],
   providers: [
     CharacterMockService,
     CharactersActions,

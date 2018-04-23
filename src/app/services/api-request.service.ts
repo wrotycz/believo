@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { UserInfoService } from './user-info.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 export interface Header {
   name: string;
@@ -19,7 +20,7 @@ export class ApiRequestService {
   ) {
   }
 
-  get<T>(path: any, additionalHeaders: Header[], params: HttpParams) {
+  get<T>(path: string, additionalHeaders: Header[], params: HttpParams) {
     const url = this.createApiUrl(path);
     const headers = this.createHeaders(additionalHeaders);
 
@@ -41,11 +42,22 @@ export class ApiRequestService {
     });
   }
 
+  create<T>(path: string, body: T): Observable<string> {
+    const url = this.createApiUrl(path);
+    const headers = this.createHeaders(undefined);
+
+    return this.http.post<T>(url, body, {
+      headers: headers,
+      responseType: 'json',
+      observe: 'response'
+    }).switchMap((resp: HttpResponse<T>) => resp.headers.get('location'));
+  }
+
   private createApiUrl(path: string) {
     return ApiRequestService.resourceServerAddress + '/' + path;
   }
 
-  private createHeaders(additionalHeaders: Header[]): HttpHeaders {
+  private createHeaders(additionalHeaders: Header[] = []): HttpHeaders {
     let headers = new HttpHeaders();
 
     const token = this.userInfo.getToken();

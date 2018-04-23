@@ -1,0 +1,37 @@
+<div class="content">
+  <div class="header">
+    <div class="name">
+      <h3>Create character</h3>
+    </div>
+  </div>
+  <form connect="characterForm" (ngSubmit)="onSubmit()" #form="ngForm">
+    <table>
+      <tbody>
+      <tr>
+        <td class="label">name:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="text" name="name"
+                   ngModel required></td>
+      </tr>
+      <tr>
+        <td class="label">player:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="text" name="playerName"
+                   ngModel required></td>
+      </tr>
+      <tr>
+        <td class="label">experience:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="number" name="experience"
+                   placeholder="0" ngModel required></td>
+      </tr>
+      <tr>
+        <td class="label">description:</td>
+        <td><input class="mdl-textfield mdl-js-textfield mdl-textfield__input" type="text" name="description"
+                   ngModel></td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="submit" [disabled]="form.invalid"
+            class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+      Create
+    </button>
+  </form>
+</div>

@@ -15,7 +15,6 @@ export class UserInfoService {
       console.log('UserInfoService subscription fired');
       this.auth_ = value;
     });
-
   }
 
   getToken(): string {

@@ -43,10 +43,12 @@ export class LoginService {
 
   logout() {
     this.authActions.removeToken();
+    this.landingPage = '';
     this.navigateToLandingPage();
   }
 
   private navigateToLandingPage() {
+    console.log('Navigating to landing page: ' + this.landingPage);
     this.router.navigateByUrl(this.landingPage);
   }
 

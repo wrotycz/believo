@@ -7,21 +7,17 @@ import { CharacterListComponent } from './components/character-list/character-li
 import { CharacterComponent } from './components/character/character.component';
 import { CharacterMockService } from './services/character-mock.service';
 import { CharactersActions } from '../store/actions/characters.actions';
-import { StoreModule } from '../store/store.module';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 import { SingleCharacterActions } from '../store/actions/single-character.actions';
 import { CharacterDetailsContentComponent } from './components/character-details/character-details-content/character-details-content.component';
 import { CharacterDetailsEditComponent } from './components/character-details/character-details-edit/character-details-edit.component';
 import { FormsModule } from '@angular/forms';
-import { NgReduxFormModule } from '@angular-redux/form';
 import { SingleCharacterFormActions } from '../store/actions/single-character-form.actions';
 
 @NgModule({
   imports: [
     CommonModule,
     CharactersRoutingModule,
-    StoreModule,
-    NgReduxFormModule,
     FormsModule
   ],
   declarations: [

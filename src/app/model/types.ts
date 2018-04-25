@@ -1,8 +1,9 @@
+import { HateoasEntity } from './hateoas-model';
+
 export interface User {
-  id: number;
-  type: string;
+  name: string;
   email: string;
-  username: string;
+  locked: boolean;
 }
 
 export interface Scenario {
@@ -13,19 +14,19 @@ export interface Scenario {
 
 export type Scenarios = Scenario[];
 
-export interface Character {
-  id: number;
+export interface Character extends HateoasEntity {
   name: string;
   description?: string;
   experience: number;
-  playerName: string;
+  player: string;
 }
 
 export interface CharacterFormDto {
   name: string;
   description?: string;
   experience: number;
-  playerName: string;
+  player: string;
+  scenarioId?: number;
 }
 
 export type Characters = Character[];
@@ -51,4 +52,14 @@ export interface AuthDto {
   expires_in: number;
   scope: string;
   jti: string;
+}
+
+export interface CheckTokenDto {
+  user_name: string;
+  scope: string[];
+  active: boolean;
+  exp: number;
+  authorities: string[];
+  jti: string;
+  client_id: string;
 }

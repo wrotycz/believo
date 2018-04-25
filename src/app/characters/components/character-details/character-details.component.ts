@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Character } from '../../../model/types';
-import { CharacterMockService } from '../../services/character-mock.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AppState, StateEntity } from '../../../store/state-model';
 import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { SingleCharacterActions } from '../../../store/actions/single-character.actions';
+import { CharacterService } from '../../services/character.service';
 
 @Component({
   selector: 'app-character-details',
@@ -19,7 +19,7 @@ export class CharacterDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private characterService: CharacterMockService,
+    private characterService: CharacterService,
     private actions: SingleCharacterActions) {
   }
 

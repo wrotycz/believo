@@ -3,7 +3,7 @@ import { CharacterFormDto } from '../../model/types';
 import { PopulateFormAction } from '../actions/common.actions';
 import { SingleCharacterFormActions } from '../actions/single-character-form.actions';
 
-const INITIAL_STATE = { name: '', playerName: '', experience: 0 };
+const INITIAL_STATE = { name: '', player: '', experience: 0 };
 
 export const singleCharacterFormReducer: Reducer<CharacterFormDto> =
   (state: CharacterFormDto = INITIAL_STATE, action: PopulateFormAction<CharacterFormDto>): CharacterFormDto => {

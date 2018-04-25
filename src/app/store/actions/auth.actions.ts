@@ -10,12 +10,17 @@ export interface SetTokenAction extends Action {
 
 export type RemoveTokenAction = Action;
 
-export type AuthAction = SetTokenAction | RemoveTokenAction;
+export interface CheckTokenFailure extends Action {
+  error: any;
+}
+
+export type AuthAction = SetTokenAction | RemoveTokenAction | CheckTokenFailure;
 
 @Injectable()
 export class AuthActions {
-  static readonly SET_TOKEN = 'SET_TOKEN';
-  static readonly REMOVE_TOKEN = 'REMOVE_TOKEN';
+  static readonly SET_TOKEN = 'AUTH@SET_TOKEN';
+  static readonly REMOVE_TOKEN = 'AUTH@REMOVE_TOKEN';
+  static readonly CHECK_TOKEN_FAILURE = 'AUTH@CHECK_TOKEN_FAILURE';
 
   @dispatch() setToken(auth: Auth): SetTokenAction {
     return { type: AuthActions.SET_TOKEN, auth: auth };

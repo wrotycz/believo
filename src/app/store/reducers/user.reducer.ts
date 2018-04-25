@@ -1,14 +1,16 @@
 import { Reducer } from 'redux';
 import { User } from '../../model/types';
-import { UserAction, UserActions } from '../actions/user.actions';
+import { GetUserSuccessAction, UserAction, UserActions } from '../actions/user.actions';
 
-const INITIAL_STATE: User = { id: undefined, type: undefined, email: undefined, username: undefined };
+const INITIAL_STATE: User = { name: undefined, email: undefined, locked: undefined };
 
 export const userReducer: Reducer<User> =
   (state: User = INITIAL_STATE, action: UserAction): User => {
     switch (action.type) {
-      case UserActions.SET_USER:
-        return action.user;
+      case UserActions.GET_USER_SUCCESS:
+        return (action as GetUserSuccessAction).user;
+      case UserActions.CLEAR_USER:
+        return INITIAL_STATE;
     }
     return state;
   };

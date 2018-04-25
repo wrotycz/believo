@@ -5,8 +5,8 @@ import { Character, CharacterFormDto } from '../../../../model/types';
 import { select } from '@angular-redux/store';
 import { SingleCharacterActions } from '../../../../store/actions/single-character.actions';
 import { SingleCharacterFormActions } from '../../../../store/actions/single-character-form.actions';
-import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-character-details-edit',
@@ -25,9 +25,8 @@ export class CharacterDetailsEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.singleCharacterActions.singleCharacterEditActive();
-    this.character$.pipe(
-      switchMap(stateEntity => of(stateEntity.payload))
-    ).subscribe(character => {
+    this.character$.switchMap(stateEntity => of(stateEntity.payload))
+    .subscribe(character => {
       const charDto = Object.assign({}, character);
       if (charDto) {
         charDto.id = undefined;

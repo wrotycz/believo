@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
-import { dispatch } from '@angular-redux/store';
 import { Action } from 'redux';
 import { User } from '../../model/types';
 
-interface SetUserAction extends Action {
+export interface GetUserAction extends Action {
+  username: string;
+}
+
+export interface GetUserSuccessAction extends Action {
   user: User;
 }
 
-export type UserAction = SetUserAction;
+export interface GetUserFailureAction extends Action {
+  error: any;
+}
+
+export type ClearUser = Action;
+
+export type UserAction = GetUserAction | GetUserSuccessAction | GetUserFailureAction | ClearUser;
 
 @Injectable()
 export class UserActions {
-  static readonly SET_USER = 'SET_USER';
-
-  @dispatch() setUser(user: User): SetUserAction {
-    return { type: UserActions.SET_USER, user: user };
-  }
+  static readonly GET_USER = 'USER@GET_USER';
+  static readonly GET_USER_FAILURE = 'USER@GET_USER_FAILURE';
+  static readonly GET_USER_SUCCESS = 'USER@GET_USER_SUCCESS';
+  static readonly CLEAR_USER = 'USER@CLEAR_USER';
 }

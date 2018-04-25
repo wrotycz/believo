@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ApiRequestService } from './api-request.service';
-import { AuthDto } from '../model/types';
+import { AuthDto, CheckTokenDto } from '../model/types';
 import { AuthActions } from '../store/actions/auth.actions';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { of } from 'rxjs/observable/of';
+import { Observable } from 'rxjs/Observable';
 
 export interface AuthForm {
   grant_type: string;
@@ -34,11 +36,23 @@ export class LoginService {
 
     const body = this.createLoginBody(username, password);
 
-    this.api.post<AuthDto>('oauth/token', body, additionalHeaders, undefined)
+    this.api.outsidePost<AuthDto>('oauth/token', body, additionalHeaders, undefined)
       .subscribe((auth: AuthDto) => {
         this.authActions.setToken({ token: auth.access_token, refreshToken: auth.refresh_token });
         this.navigateToLandingPage();
       }, this.handleError);
+  }
+
+  checkToken(token: string): Observable<CheckTokenDto | void> {
+    const additionalHeaders = [
+      { name: 'Authorization', value: 'Basic ' + LoginService.clientSecret }
+    ];
+
+    let params = new HttpParams();
+    params = params.append('token', token);
+
+    return this.api.outsideGet<CheckTokenDto>('oauth/check_token', additionalHeaders, params)
+      .catch(error => of(this.handleError(error)));
   }
 
   logout() {

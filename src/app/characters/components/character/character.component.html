@@ -4,10 +4,10 @@
   </div>
   <br><br>
   <div class="mdl-card__supporting-text">
-    Player: {{character.playerName}}
+    Player: {{character.player}}
   </div>
   <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="character.id">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="getLink()">
       Proceed
     </a>
   </div>

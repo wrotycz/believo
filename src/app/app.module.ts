@@ -17,6 +17,7 @@ import { ForbiddenComponent } from './auth-components/forbidden/forbidden.compon
 import { ErrorComponent } from './auth-components/error/error.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { NgReduxFormModule } from '@angular-redux/form';
+import { UserService } from './services/user.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -43,12 +44,12 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     NgReduxModule,
-    NgReduxFormModule
   ],
   providers: [
     ApiRequestService,
     UserInfoService,
     LoginService,
+    UserService,
     AuthActions,
     AuthGuard],
   bootstrap: [AppComponent]

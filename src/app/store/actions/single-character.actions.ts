@@ -1,23 +1,46 @@
 import { Injectable } from '@angular/core';
 import { Character, CharacterFormDto } from '../../model/types';
 import { dispatch } from '@angular-redux/store';
-import { CreateAction, EditActiveAction, RequestDispatchedAction, RequestFailureAction, RequestSuccessAction } from './common.actions';
+import {
+  CreateAction,
+  CreateActionFailure,
+  CreateActionSuccess,
+  EditActiveAction,
+  RequestDispatchedAction,
+  RequestFailureAction,
+  RequestSuccessAction
+} from './common.actions';
 
-export type SingleCharacterAction = RequestDispatchedAction | RequestSuccessAction<Character> | RequestFailureAction | EditActiveAction;
+export type SingleCharacterAction =
+  RequestDispatchedAction
+  | RequestSuccessAction<Character>
+  | RequestFailureAction
+  | EditActiveAction
+  | CreateAction<CharacterFormDto>
+  | CreateActionSuccess
+  | CreateActionFailure;
 
 @Injectable()
 export class SingleCharacterActions {
-  static readonly SINGLE_CHARACTER_REQUEST_DISPATCHED = 'SINGLE_CHARACTER_REQUEST_DISPATCHED';
-  static readonly SINGLE_CHARACTER_REQUEST_SUCCESS = 'SINGLE_CHARACTER_REQUEST_SUCCESS';
-  static readonly SINGLE_CHARACTER_REQUEST_FAILURE = 'SINGLE_CHARACTER_REQUEST_FAILURE';
+  static readonly SINGLE_CHARACTER_REQUEST_DISPATCHED = 'CHAR@SINGLE_CHARACTER_REQUEST_DISPATCHED';
+  static readonly SINGLE_CHARACTER_REQUEST_SUCCESS = 'CHAR@SINGLE_CHARACTER_REQUEST_SUCCESS';
+  static readonly SINGLE_CHARACTER_REQUEST_FAILURE = 'CHAR@SINGLE_CHARACTER_REQUEST_FAILURE';
 
-  static readonly SINGLE_CHARACTER_EDIT_ACTIVE = 'SINGLE_CHARACTER_EDIT_ACTIVE';
-  static readonly SINGLE_CHARACTER_EDIT_INACTIVE = 'SINGLE_CHARACTER_EDIT_INACTIVE';
+  static readonly SINGLE_CHARACTER_EDIT_ACTIVE = 'CHAR@SINGLE_CHARACTER_EDIT_ACTIVE';
+  static readonly SINGLE_CHARACTER_EDIT_INACTIVE = 'CHAR@SINGLE_CHARACTER_EDIT_INACTIVE';
 
-  static readonly SINGLE_CHARACTER_EDIT_REQUEST_SUCCESS = 'SINGLE_CHARACTER_EDITED';
-  static readonly SINGLE_CHARACTER_EDIT_REQUEST_ERROR = 'SINGLE_CHARACTER_EDIT_REQUEST_ERROR';
+  static readonly SINGLE_CHARACTER_EDIT_REQUEST_SUCCESS = 'CHAR@SINGLE_CHARACTER_EDITED';
+  static readonly SINGLE_CHARACTER_EDIT_REQUEST_ERROR = 'CHAR@SINGLE_CHARACTER_EDIT_REQUEST_ERROR';
 
-  static readonly CREATE_CHARACTER = 'CREATE_CHARACTER';
+  static readonly CREATE_CHARACTER = 'CHAR@CREATE_CHARACTER';
+  static readonly CREATE_CHARACTER_SUCCESS = 'CHAR@CREATE_CHARACTER_SUCCESS';
+  static readonly CREATE_CHARACTER_FAILURE = 'CHAR@CREATE_CHARACTER_FAILURE';
+
+  static readonly ADD_SCENARIO_SUCCESS = 'CHAR@ADD_SCENARIO_SUCCESS';
+  static readonly ADD_SCENARIO_FAILURE = 'CHAR@ADD_SCENARIO_FAILURE';
+
+  static readonly ADD_USER_SUCCESS = 'CHAR@ADD_USER_SUCCESS';
+  static readonly ADD_USER_FAILURE = 'CHAR@ADD_USER_FAILURE';
 
   @dispatch() singleCharacterRequestDispatched(): RequestDispatchedAction {
     return { type: SingleCharacterActions.SINGLE_CHARACTER_REQUEST_DISPATCHED };

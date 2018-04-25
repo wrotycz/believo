@@ -9,4 +9,9 @@ import { Character } from '../../../model/types';
 })
 export class CharacterComponent {
   @Input() character: Character;
+
+  getLink() {
+    const location = this.character._links.self.href;
+    return location.substring(location.lastIndexOf('/') + 1);
+  }
 }

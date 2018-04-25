@@ -19,3 +19,12 @@ export interface RequestFailureAction extends Action {
 export interface CreateAction<T> extends Action {
   payload: T;
 }
+
+export interface CreateActionSuccess extends Action {
+  payload: any;
+  location: string;
+}
+
+export interface CreateActionFailure extends Action {
+  error?: any;
+}

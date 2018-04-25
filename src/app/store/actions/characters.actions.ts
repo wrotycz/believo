@@ -8,9 +8,9 @@ export type CharactersAction = RequestDispatchedAction | RequestSuccessAction<Ch
 
 @Injectable()
 export class CharactersActions {
-  static readonly CHARACTERS_REQUEST_DISPATCHED = 'CHARACTERS_REQUEST_DISPATCHED';
-  static readonly CHARACTERS_REQUEST_SUCCESS = 'CHARACTERS_REQUEST_SUCCESS';
-  static readonly CHARACTERS_REQUEST_FAILURE = 'CHARACTERS_REQUEST_FAILURE';
+  static readonly CHARACTERS_REQUEST_DISPATCHED = 'CHARS@REQUEST_DISPATCHED';
+  static readonly CHARACTERS_REQUEST_SUCCESS = 'CHARS@REQUEST_SUCCESS';
+  static readonly CHARACTERS_REQUEST_FAILURE = 'CHARS@REQUEST_FAILURE';
 
   @dispatch() charactersRequestDispatched(): RequestDispatchedAction {
     return { type: CharactersActions.CHARACTERS_REQUEST_DISPATCHED };

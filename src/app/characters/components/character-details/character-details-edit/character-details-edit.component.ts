@@ -29,7 +29,6 @@ export class CharacterDetailsEditComponent implements OnInit, OnDestroy {
     .subscribe(character => {
       const charDto = Object.assign({}, character);
       if (charDto) {
-        charDto.id = undefined;
         this.formActions.populateCharacterForm(charDto);
       }
     });

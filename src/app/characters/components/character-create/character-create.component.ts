@@ -5,7 +5,11 @@ import { SingleCharacterActions } from '../../../store/actions/single-character.
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/audit';
 import { ActivatedRoute } from '@angular/router';
+import { ApiRequestService } from '../../../services/api-request.service';
+import { UserInfoService } from '../../../services/user-info.service';
 
 @Component({
   selector: 'app-character-create',
@@ -20,6 +24,7 @@ export class CharacterCreateComponent implements OnInit {
   scenarioId: number;
 
   constructor(
+    private userInfo: UserInfoService,
     private singleCharacterActions: SingleCharacterActions,
     private formActions: SingleCharacterFormActions,
     private route: ActivatedRoute
@@ -28,7 +33,9 @@ export class CharacterCreateComponent implements OnInit {
 
   onSubmit() {
     this.characterForm$.subscribe(characterDto => {
-      characterDto.scenarioId = this.scenarioId;
+      characterDto.scenario = ApiRequestService.RESOURCE_SERVER_ADDRESS + '/scenarios/' + this.scenarioId;
+      characterDto.owner = this.userInfo.getCurrentUser()._links.self.href;
+
       this.singleCharacterActions.createCharacter(characterDto);
     });
   }

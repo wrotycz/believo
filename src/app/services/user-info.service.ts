@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth } from '../model/types';
+import { Auth, User } from '../model/types';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 
@@ -7,10 +7,10 @@ import { Observable } from 'rxjs/Observable';
 export class UserInfoService {
 
   @select() auth$: Observable<Auth>;
-  @select() user$: Observable<any>;
+  @select() user$: Observable<User>;
 
   private auth_: Auth;
-  private user_: any;
+  private user_: User;
 
   constructor() {
     this.auth$.subscribe(value => this.auth_ = value);
@@ -33,7 +33,7 @@ export class UserInfoService {
     return !!(this.auth_ && this.auth_.token);
   }
 
-  getCurrentUser(): any {
+  getCurrentUser(): User {
     return this.user_;
   }
 

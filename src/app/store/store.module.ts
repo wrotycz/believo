@@ -8,7 +8,6 @@ import { createLogger } from 'redux-logger';
 import { SingleCharacterEpics } from './epics/single-character.epics';
 import { CharacterService } from '../characters/services/character.service';
 import { LoginEpics } from './epics/login.epics';
-import { UserService } from '../services/user.service';
 import { UserEpics } from './epics/user.epics';
 
 @NgModule({
@@ -33,8 +32,6 @@ export class StoreModule {
   ) {
     const middleware = [
       createEpicMiddleware(this.singleCharacterEpics.create),
-      createEpicMiddleware(this.singleCharacterEpics.addScenarioAfterCreate),
-      createEpicMiddleware(this.singleCharacterEpics.addUserAfterCreate),
       createEpicMiddleware(this.loginEpics.postSetToken),
       createEpicMiddleware(this.loginEpics.postRemoveToken),
       createEpicMiddleware(this.userEpics.getUser),

@@ -1,6 +1,6 @@
 import { HateoasEntity } from './hateoas-model';
 
-export interface User {
+export interface User extends HateoasEntity {
   name: string;
   email: string;
   locked: boolean;
@@ -26,7 +26,8 @@ export interface CharacterFormDto {
   description?: string;
   experience: number;
   player: string;
-  scenarioId?: number;
+  owner?: string;
+  scenario?: string;
 }
 
 export type Characters = Character[];

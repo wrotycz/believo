@@ -22,27 +22,5 @@ export class SingleCharacterEpics {
         .catch(error => of({
           type: SingleCharacterActions.CREATE_CHARACTER_FAILURE,
           error: error
-        })));
-
-  addScenarioAfterCreate = action$ => action$.ofType(SingleCharacterActions.CREATE_CHARACTER_SUCCESS)
-    .mergeMap(({ payload, location }) =>
-      this.characterService.addScenario(payload.scenarioId, location))
-    .map(resp => ({
-      type: SingleCharacterActions.ADD_SCENARIO_SUCCESS
-    }))
-    .catch(error => of({
-      type: SingleCharacterActions.ADD_SCENARIO_FAILURE,
-      error: error
-    }))
-
-  addUserAfterCreate = action$ => action$.ofType(SingleCharacterActions.CREATE_CHARACTER_SUCCESS)
-    .mergeMap(({ location }) =>
-      this.characterService.addOwner(location))
-    .map(resp => ({
-      type: SingleCharacterActions.ADD_USER_SUCCESS
-    }))
-    .catch(error => of({
-      type: SingleCharacterActions.ADD_USER_FAILURE,
-      error: error
-    }))
+        })))
 }

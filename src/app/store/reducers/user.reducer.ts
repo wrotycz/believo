@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { User } from '../../model/types';
 import { GetUserSuccessAction, UserAction, UserActions } from '../actions/user.actions';
 
-const INITIAL_STATE: User = { name: undefined, email: undefined, locked: undefined };
+const INITIAL_STATE: User = { name: undefined, email: undefined, locked: undefined, _links: undefined };
 
 export const userReducer: Reducer<User> =
   (state: User = INITIAL_STATE, action: UserAction): User => {

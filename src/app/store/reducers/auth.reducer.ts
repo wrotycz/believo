@@ -2,7 +2,10 @@ import { Reducer } from 'redux';
 import { Auth } from '../../model/types';
 import { AuthAction, AuthActions, SetTokenAction } from '../actions/auth.actions';
 
-const INITIAL_STATE: Auth = { token: undefined, refreshToken: undefined };
+const INITIAL_STATE: Auth = {
+  token: localStorage.getItem('token'),
+  refreshToken: localStorage.getItem('refreshToken')
+};
 
 export const authReducer: Reducer<Auth> =
   (state = INITIAL_STATE, action: AuthAction): Auth => {

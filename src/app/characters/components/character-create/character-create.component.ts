@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/audit';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiRequestService } from '../../../services/api-request.service';
 import { UserInfoService } from '../../../services/user-info.service';
 
@@ -27,7 +27,8 @@ export class CharacterCreateComponent implements OnInit {
     private userInfo: UserInfoService,
     private singleCharacterActions: SingleCharacterActions,
     private formActions: SingleCharacterFormActions,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -37,6 +38,7 @@ export class CharacterCreateComponent implements OnInit {
       characterDto.owner = this.userInfo.getCurrentUser()._links.self.href;
 
       this.singleCharacterActions.createCharacter(characterDto);
+      this.router.navigateByUrl(`scenarios/${this.scenarioId}/characters`);
     });
   }
 

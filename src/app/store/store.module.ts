@@ -33,7 +33,8 @@ export class StoreModule {
     const middleware = [
       createEpicMiddleware(this.singleCharacterEpics.create),
       createEpicMiddleware(this.loginEpics.postSetToken),
-      createEpicMiddleware(this.loginEpics.postRemoveToken),
+      createEpicMiddleware(this.loginEpics.clearUserAfterRemoveToken),
+      createEpicMiddleware(this.loginEpics.clearLocalStorageAfterRemoveToken),
       createEpicMiddleware(this.userEpics.getUser),
       createLogger()
     ];

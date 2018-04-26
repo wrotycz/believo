@@ -25,10 +25,23 @@ export class LoginEpics {
         .catch(error => of({
           type: AuthActions.CHECK_TOKEN_FAILURE,
           error: error
-        })));
+        })))
 
-  postRemoveToken = action$ => action$.ofType(AuthActions.REMOVE_TOKEN)
+  clearUserAfterRemoveToken = action$ => action$.ofType(AuthActions.REMOVE_TOKEN)
     .mergeMap(action => of({
       type: UserActions.CLEAR_USER
+    }))
+
+  clearLocalStorageAfterRemoveToken = action$ => action$.ofType(AuthActions.REMOVE_TOKEN)
+    .mergeMap(action => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
+      return of({
+        type: AuthActions.REMOVE_TOKEN_SUCCESS
+      });
+    })
+    .catch(error => of({
+      type: AuthActions.REMOVE_TOKEN_FAILURE,
+      error: error
     }))
 }

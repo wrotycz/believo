@@ -39,7 +39,7 @@ export class LoginService {
     this.api.outsidePost<AuthDto>('oauth/token', body, additionalHeaders, undefined)
       .subscribe((auth: AuthDto) => {
         this.authActions.setToken({ token: auth.access_token, refreshToken: auth.refresh_token });
-        this.navigateToLandingPage();
+        this.navigateToLandingPage(true);
       }, this.handleError);
   }
 
@@ -57,13 +57,16 @@ export class LoginService {
 
   logout() {
     this.authActions.removeToken();
-    this.landingPage = '';
+    this.landingPage = 'login';
     this.navigateToLandingPage();
   }
 
-  private navigateToLandingPage() {
-    console.log('Navigating to landing page: ' + this.landingPage);
-    this.router.navigateByUrl(this.landingPage);
+  private navigateToLandingPage(fromLogin = false) {
+    if (fromLogin && this.landingPage === 'login') {
+      this.router.navigateByUrl('');
+    } else {
+      this.router.navigateByUrl(this.landingPage);
+    }
   }
 
   private createLoginBody(username: string, password: string): string {

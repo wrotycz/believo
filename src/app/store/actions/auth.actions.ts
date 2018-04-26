@@ -22,6 +22,9 @@ export class AuthActions {
   static readonly REMOVE_TOKEN = 'AUTH@REMOVE_TOKEN';
   static readonly CHECK_TOKEN_FAILURE = 'AUTH@CHECK_TOKEN_FAILURE';
 
+  static readonly REMOVE_TOKEN_SUCCESS = 'AUTH@REMOVE_TOKEN_SUCCESS';
+  static readonly REMOVE_TOKEN_FAILURE = 'AUTH@REMOVE_TOKEN_FAILURE';
+
   @dispatch() setToken(auth: Auth): SetTokenAction {
     return { type: AuthActions.SET_TOKEN, auth: auth };
   }

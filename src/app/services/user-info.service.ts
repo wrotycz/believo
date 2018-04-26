@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth, User } from '../model/types';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
+import { AuthActions } from '../store/actions/auth.actions';
 
 @Injectable()
 export class UserInfoService {
@@ -12,8 +13,15 @@ export class UserInfoService {
   private auth_: Auth;
   private user_: User;
 
-  constructor() {
-    this.auth$.subscribe(value => this.auth_ = value);
+  constructor(private authActions: AuthActions) {
+    this.auth$.subscribe(value => {
+      this.auth_ = value;
+      localStorage.setItem('token', value.token);
+      localStorage.setItem('refreshToken', value.refreshToken);
+      if (!this.user_) {
+        this.authActions.setToken(this.auth_);
+      }
+    });
     this.user$.subscribe(value => this.user_ = value);
   }
 
@@ -30,7 +38,7 @@ export class UserInfoService {
   }
 
   isUserLoggedIn(): boolean {
-    return !!(this.auth_ && this.auth_.token);
+    return (this.auth_ && this.auth_.token && (this.auth_.token !== 'null'));
   }
 
   getCurrentUser(): User {
